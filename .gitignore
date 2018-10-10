@@ -30,3 +30,7 @@
 
 # Debug files
 *.dSYM/
+
+main\.cpp
+
+main\.c
