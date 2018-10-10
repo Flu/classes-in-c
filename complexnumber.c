@@ -6,19 +6,19 @@ struct _ComplexNumber {
 
 	// Class methods
 	void (*__init__)(ComplexNumber*);
-	void (*setReal)(ComplexNumber*, double);
-	void (*setImag)(ComplexNumber*, double);
+	void (*setReal)(ComplexNumber*, const double);
+	void (*setImag)(ComplexNumber*, const double);
 	float (*magnitude)(const ComplexNumber*);
 	int (*equalTo)(ComplexNumber*, const ComplexNumber*);
 };
 
 // Private methods
 
-static void setReal_P(ComplexNumber* this, double real) {
+static void setReal_P(ComplexNumber* this, const double real) {
 	this->real = real;
 }
 
-static void setImag_P(ComplexNumber* this, double imag) {
+static void setImag_P(ComplexNumber* this, const double imag) {
 	this->imag = imag;
 }
 
