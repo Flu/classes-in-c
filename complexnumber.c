@@ -10,6 +10,7 @@ struct _ComplexNumber {
 	void (*setImag)(ComplexNumber*, const double);
 	float (*magnitude)(const ComplexNumber*);
 	int (*equalTo)(ComplexNumber*, const ComplexNumber*);
+	ComplexNumber* (*conjugate)(const ComplexNumber*);
 };
 
 // Private methods
@@ -30,6 +31,14 @@ static int equalTo_P(ComplexNumber* this, const ComplexNumber* comp) {
 	return (this->real == comp->real && this->imag == comp->imag) ? 1 : 0;
 }
 
+static ComplexNumber* conjugate_P(const ComplexNumber* this) {
+	ComplexNumber* temp = (ComplexNumber*)malloc(sizeof(ComplexNumber));
+	__init__(temp);
+	temp->setReal(temp, this->real);
+	temp->setImag(temp, -this->imag);
+	return temp;
+}
+
 // Public
 
 void __init__(ComplexNumber* this) {
@@ -39,4 +48,5 @@ void __init__(ComplexNumber* this) {
 	this->setImag = setImag_P;
 	this->magnitude = magnitude_P;
 	this->equalTo = equalTo_P;
+	this->conjugate = conjugate_P;
 }
